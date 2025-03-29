@@ -11,5 +11,8 @@ namespace UluhEvidencija.Contract.Models
         public int ID { get; set; }
         public required string Name { get; set; }
         public string? Description { get; set; }
+
+        //navigation properties
+        public ICollection<Location> Locations { get; set; }
     }
 }

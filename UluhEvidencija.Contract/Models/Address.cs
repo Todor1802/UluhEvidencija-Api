@@ -10,5 +10,8 @@ namespace UluhEvidencija.Contract.Models
     {
         public int ID { get; set; }
         public required string FreeFormAddress { get; set; }
+
+        //navigation properties
+        public ICollection<Location> Locations { get; set; }
     }
 }
