@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UluhEvidencija.Contract.Models;
 
-namespace UluhEvidencija.Api
+namespace UluhEvidencija.Api.Data
 {
     public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

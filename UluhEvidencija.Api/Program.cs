@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using UluhEvidencija.Api;
+using UluhEvidencija.Api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
