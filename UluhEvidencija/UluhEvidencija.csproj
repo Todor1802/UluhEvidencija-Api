@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Service\" />
+    <Folder Include="Repository\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UluhEvidencija.Contract\UluhEvidencija.Contract.csproj" />
+  </ItemGroup>
+
 </Project>
