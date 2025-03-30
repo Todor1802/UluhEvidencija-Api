@@ -18,5 +18,6 @@ namespace UluhEvidencija.Contract.Models
         //Navigation properties
         public required LocationType LocationType { get; set; }
         public required Address Address { get; set; }
+        public ICollection<Exhibition> Exhibitions { get; set; }
     }
 }

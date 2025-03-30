@@ -12,11 +12,12 @@ namespace UluhEvidencija.Contract.Models
         public required string Title { get; set; }
         public string? Description { get; set; }
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
         public string? CoverImagePath { get; set; }
         public bool IsActive { get; set; }
         public int LocationID { get; set; }
         //Navigation properties
         public required Location Location { get; set; }
+        public ICollection<ExhibitionPainting> ExhibitionPaintings { get; set; }
     }
 }

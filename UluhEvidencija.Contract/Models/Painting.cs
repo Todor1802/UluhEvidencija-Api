@@ -21,5 +21,6 @@ namespace UluhEvidencija.Contract.Models
         public Author? Author{ get; set; }
         public Technique? Technique { get; set; }
         public Format? Format { get; set; }
+        public ICollection<ExhibitionPainting> ExhibitionPaintings { get; set; }
     }
 }
