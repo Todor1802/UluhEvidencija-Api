@@ -1,10 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UluhEvidencija.Contract.Models;
 
-namespace UluhEvidencija.Api.Data
+namespace UluhEvidencija.Migration
 {
     public class AppDbContext : DbContext
     {
+        public DbSet<Painting> Paintings { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Exhibition> Exhibitions { get; set; }
+        public DbSet<ExhibitionPainting> ExhibitionPaintings { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<LocationType> LocationTypes { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Technique> Techniques { get; set; }
+        public DbSet<Format> Formats { get; set; }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 
@@ -35,7 +45,8 @@ namespace UluhEvidencija.Api.Data
                 builder.HasOne(l => l.LocationType).WithMany(lt => lt.Locations).HasForeignKey(l => l.LocationTypeID);
                 builder.HasOne(l => l.Address).WithMany(a => a.Locations).HasForeignKey(l => l.AddressID);
             });
-            modelBuilder.Entity<Exhibition>(builder => {
+            modelBuilder.Entity<Exhibition>(builder =>
+            {
                 builder.HasKey(e => e.ID);
                 builder.Property(e => e.Title).IsRequired();
                 builder.Property(e => e.Description);
@@ -46,13 +57,15 @@ namespace UluhEvidencija.Api.Data
                 builder.Property(e => e.LocationID).IsRequired();
                 builder.HasOne(e => e.Location).WithMany(l => l.Exhibitions).HasForeignKey(e => e.LocationID);
             });
-            modelBuilder.Entity<ExhibitionPainting>(builder => {
+            modelBuilder.Entity<ExhibitionPainting>(builder =>
+            {
                 builder.HasKey(ep => new { ep.ExhibitionID, ep.PaintingID });
                 builder.Property(e => e.DisplayOrder);
                 builder.HasOne(ep => ep.Exhibition).WithMany(e => e.ExhibitionPaintings).HasForeignKey(ep => ep.ExhibitionID);
                 builder.HasOne(ep => ep.Painting).WithMany(p => p.ExhibitionPaintings).HasForeignKey(ep => ep.PaintingID);
             });
-            modelBuilder.Entity<Painting>(builder => {
+            modelBuilder.Entity<Painting>(builder =>
+            {
                 builder.HasKey(p => p.ID);
                 builder.Property(p => p.Title).IsRequired();
                 builder.Property(p => p.Year).IsRequired();
@@ -87,6 +100,17 @@ namespace UluhEvidencija.Api.Data
                 builder.Property(f => f.WidthCm).HasPrecision(5, 2);
                 builder.Property(f => f.HeightCm).HasPrecision(5, 2);
             });
+
+            modelBuilder.Entity<Address>().ToTable("Addresses");
+            modelBuilder.Entity<LocationType>().ToTable("LocationTypes");
+            modelBuilder.Entity<Location>().ToTable("Locations");
+            modelBuilder.Entity<Exhibition>().ToTable("Exhibitions");
+            modelBuilder.Entity<ExhibitionPainting>().ToTable("ExhibitionPaintings");
+            modelBuilder.Entity<Painting>().ToTable("Paintings");
+            modelBuilder.Entity<Author>().ToTable("Authors");
+            modelBuilder.Entity<Technique>().ToTable("Techniques");
+            modelBuilder.Entity<Format>().ToTable("Formats");
+
         }
     }
 }

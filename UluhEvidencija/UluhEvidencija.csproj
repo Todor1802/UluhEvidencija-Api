@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\" />
-    <Folder Include="Service\" />
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\UluhEvidencija.Contract\UluhEvidencija.Contract.csproj" />
+    <ProjectReference Include="..\UluhEvidencija.Migration\UluhEvidencija.Migration.csproj" />
   </ItemGroup>
 
 </Project>
