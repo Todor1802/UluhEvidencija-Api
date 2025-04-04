@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,24 +30,63 @@ namespace UluhEvidencija.Repository
             }
         }
 
-        public Task<Response<bool>> DeletePainting(int id)
+        public async Task<Response<bool>> DeletePainting(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var deletedPaintings = await _context.Paintings
+                    .Where(p => p.ID == id)
+                    .ExecuteDeleteAsync();
+
+                if (deletedPaintings != 0)
+                {
+                    return Response.Success(true);
+                }
+                return Response.Conflict("Nothing to delete");
+            }
+            catch (Exception ex)
+            {
+                return Response.Error(ex.Message);
+            }
         }
 
-        public Task<Response<List<Painting>>> GetAllPaintings()
+        public async Task<Response<List<Painting>>> GetAllPaintings()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Response.Success(await _context.Paintings.ToListAsync());
+            }
+            catch (Exception ex)
+            {
+                return Response.Error(ex.Message);
+            }
         }
 
-        public Task<Response<Painting>> GetPainting(int id)
+        public async Task<Response<Painting?>> GetPainting(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Response.Success(await _context.Paintings.FindAsync(id));
+            }
+            catch (Exception ex)
+            {
+                return Response.Error(ex.Message);
+            }
         }
 
-        public Task<Response<Painting>> UpdatePainting(Painting painting)
+        public async Task<Response<Painting?>> UpdatePainting(Painting painting)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Paintings.Attach(painting);
+                _context.Entry(painting).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return Response.Success(painting ?? null);
+            }
+            catch (Exception ex)
+            {
+                return Response.Error(ex.Message);
+            }
         }
     }
 }

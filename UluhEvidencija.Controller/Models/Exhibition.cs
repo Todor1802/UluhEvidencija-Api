@@ -17,8 +17,5 @@ namespace UluhEvidencija.Controller.Models
         public string? CoverImagePath { get; set; }
         public bool IsActive { get; set; }
         public int LocationID { get; set; }
-        //Navigation properties
-        public required Location Location { get; set; }
-        public ICollection<ExhibitionPainting> ExhibitionPaintings { get; set; }
     }
 }

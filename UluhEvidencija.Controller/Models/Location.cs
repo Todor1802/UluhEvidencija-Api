@@ -15,10 +15,5 @@ namespace UluhEvidencija.Controller.Models
         public int MaxCapacity { get; set; }
         public int LocationTypeID { get; set; }
         public int AddressID { get; set; }
-
-        //Navigation properties
-        public required LocationType LocationType { get; set; }
-        public required Address Address { get; set; }
-        public ICollection<Exhibition> Exhibitions { get; set; }
     }
 }

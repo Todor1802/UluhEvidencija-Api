@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using UluhEvidencija.Contract.IRepository;
 using UluhEvidencija.Contract.IService;
 using UluhEvidencija.Migration;
@@ -20,12 +20,13 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 builder.Services.AddScoped<IPaintingRepository, PaintingRepository>();
 builder.Services.AddScoped<IPaintingService, PaintingService>();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);  // 👈 AutoMapper registration
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
-{
+{   
     app.UseSwagger();
     app.UseSwaggerUI();
 }

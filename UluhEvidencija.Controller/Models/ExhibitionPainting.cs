@@ -12,9 +12,5 @@ namespace UluhEvidencija.Controller.Models
         public int ExhibitionID { get; set; }
         public int PaintingID { get; set; }
         public int? DisplayOrder { get; set; }
-
-        //Navigation properties
-        public required Exhibition Exhibition { get; set; }
-        public required Painting Painting { get; set; }
     }
 }

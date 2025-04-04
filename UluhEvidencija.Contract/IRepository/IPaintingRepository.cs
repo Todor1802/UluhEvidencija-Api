@@ -11,9 +11,9 @@ namespace UluhEvidencija.Contract.IRepository
     public interface IPaintingRepository
     {
         Task<Response<List<Painting>>> GetAllPaintings();
-        Task<Response<Painting>> GetPainting(int id);
+        Task<Response<Painting?>> GetPainting(int id);
         Task<Response<Painting>> AddPainting(Painting painting);
-        Task<Response<Painting>> UpdatePainting(Painting painting);
+        Task<Response<Painting?>> UpdatePainting(Painting painting);
         Task<Response<bool>> DeletePainting(int id);
     }
 }

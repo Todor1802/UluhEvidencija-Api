@@ -9,7 +9,6 @@ namespace UluhEvidencija.Controller.Models
 {
     public class Painting : BaseEntity
     {
-        public int ID { get; set; }
         public required string Title { get; set; }
         public int Year { get; set; }
         public required string PhotoPath { get; set; }
@@ -17,11 +16,5 @@ namespace UluhEvidencija.Controller.Models
         public int? TechniqueID { get; set; }
         public int? FormatID { get; set; }
         public string? Description { get; set; }
-
-        //Navigation properties
-        public Author? Author { get; set; }
-        public Technique? Technique { get; set; }
-        public Format? Format { get; set; }
-        public ICollection<ExhibitionPainting> ExhibitionPaintings { get; set; }
     }
 }

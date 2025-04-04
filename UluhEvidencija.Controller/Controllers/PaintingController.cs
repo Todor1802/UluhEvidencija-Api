@@ -6,13 +6,13 @@ using UluhEvidencija.Controller.Models;
 namespace UluhEvidencija.Controller.Controllers
 {
     [ApiController]
-    [Route("/painting")]
+    [Route("api/painting")]
     public class PaintingController(IPaintingService painting, IMapper mapper) : ControllerBase
     {
         private readonly IPaintingService _painting = painting;
         private readonly IMapper _mapper = mapper;
 
-        [HttpGet]
+        [HttpGet("getAllPaintings")]
         public async Task<IActionResult> GetAllPaintings()
         {
             var response = await _painting.GetAllPaintings();
@@ -24,19 +24,19 @@ namespace UluhEvidencija.Controller.Controllers
             var response = await _painting.GetPainting(id);
             return Ok(response);
         }
-        [HttpPost]
+        [HttpPost("addPaintings")]
         public async Task<IActionResult> AddPainting([FromBody] Painting painting)
         {
             var response = await _painting.AddPainting(_mapper.Map<Contract.Models.Painting>(painting));
             return Ok(response);
         }
-        [HttpPut]
+        [HttpPut("updatePaintings")]
         public async Task<IActionResult> UpdatePainting([FromBody] Painting painting)
         {
             var response = await _painting.UpdatePainting(_mapper.Map<Contract.Models.Painting>(painting));
             return Ok(response);
         }
-        [HttpDelete]
+        [HttpDelete("deletePaintings")]
         public async Task<IActionResult> DeletePainting(int id)
         {
             var response = await _painting.DeletePainting(id);
