@@ -10,27 +10,23 @@ using UluhEvidencija.Contract.Models.Response;
 
 namespace UluhEvidencija.Service
 {
-    public class PaintingService : IPaintingService
+    public class PaintingService(IPaintingRepository paintingRepository) : IPaintingService
     {
-        private readonly IPaintingRepository _paintingRepository;
+        private readonly IPaintingRepository _paintingRepository = paintingRepository;
 
-        public PaintingService(IPaintingRepository paintingRepository)
-        {
-            _paintingRepository = paintingRepository;
-        }
         public Task<Response<Painting>> AddPainting(Painting painting)
-            => _paintingRepository.AddPainting(painting);
+            => _paintingRepository.Add(painting);
 
         public Task<Response<bool>> DeletePainting(int id) =>
-            _paintingRepository.DeletePainting(id);
+            _paintingRepository.Delete(id);
 
         public Task<Response<List<Painting>>> GetAllPaintings() =>
-            _paintingRepository.GetAllPaintings();
+            _paintingRepository.GetAll();
 
         public Task<Response<Painting>> GetPainting(int id) =>
-            _paintingRepository.GetPainting(id);
+            _paintingRepository.Get(id);
 
         public Task<Response<Painting>> UpdatePainting(Painting painting) =>
-            _paintingRepository.UpdatePainting(painting);
+            _paintingRepository.Update(painting);
     }
 }

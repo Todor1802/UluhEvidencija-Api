@@ -9,6 +9,7 @@ namespace UluhEvidencija.Controller.Models
 {
     public class Painting : BaseEntity
     {
+        public int ID { get; set; }
         public required string Title { get; set; }
         public int Year { get; set; }
         public required string PhotoPath { get; set; }

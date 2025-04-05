@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UluhEvidencija.Contract.IRepository;
 using UluhEvidencija.Contract.IService;
+using UluhEvidencija.Controller;
 using UluhEvidencija.Migration;
 using UluhEvidencija.Repository;
 using UluhEvidencija.Service;
@@ -20,7 +21,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 builder.Services.AddScoped<IPaintingRepository, PaintingRepository>();
 builder.Services.AddScoped<IPaintingService, PaintingService>();
-builder.Services.AddAutoMapper(typeof(Program).Assembly);  // 👈 AutoMapper registration
+builder.Services.AddAutoMapper(config =>
+{
+    config.AddProfile<UluhEvidencijaProfile>();
+});
 
 var app = builder.Build();
 

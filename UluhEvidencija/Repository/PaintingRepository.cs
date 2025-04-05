@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 using UluhEvidencija.Contract.IRepository;
 using UluhEvidencija.Contract.Models;
 using UluhEvidencija.Contract.Models.Response;
@@ -16,7 +10,7 @@ namespace UluhEvidencija.Repository
     {
         private readonly AppDbContext _context = context;
 
-        public async Task<Response<Painting>> AddPainting(Painting painting)
+        public async Task<Response<Painting>> Add(Painting painting)
         {
             try
             {
@@ -30,7 +24,7 @@ namespace UluhEvidencija.Repository
             }
         }
 
-        public async Task<Response<bool>> DeletePainting(int id)
+        public async Task<Response<bool>> Delete(int id)
         {
             try
             {
@@ -50,7 +44,7 @@ namespace UluhEvidencija.Repository
             }
         }
 
-        public async Task<Response<List<Painting>>> GetAllPaintings()
+        public async Task<Response<List<Painting>>> GetAll()
         {
             try
             {
@@ -62,7 +56,7 @@ namespace UluhEvidencija.Repository
             }
         }
 
-        public async Task<Response<Painting?>> GetPainting(int id)
+        public async Task<Response<Painting?>> Get(int id)
         {
             try
             {
@@ -74,7 +68,7 @@ namespace UluhEvidencija.Repository
             }
         }
 
-        public async Task<Response<Painting?>> UpdatePainting(Painting painting)
+        public async Task<Response<Painting?>> Update(Painting painting)
         {
             try
             {

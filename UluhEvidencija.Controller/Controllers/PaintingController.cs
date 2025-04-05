@@ -6,7 +6,7 @@ using UluhEvidencija.Controller.Models;
 namespace UluhEvidencija.Controller.Controllers
 {
     [ApiController]
-    [Route("api/painting")]
+    [Route("/painting")]
     public class PaintingController(IPaintingService painting, IMapper mapper) : ControllerBase
     {
         private readonly IPaintingService _painting = painting;
